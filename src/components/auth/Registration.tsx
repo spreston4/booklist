@@ -1,7 +1,21 @@
 import * as React from "react";
 import axios from "axios";
 
-const Registration = () => {
+export interface NewUserObject {
+  status?: "created";
+  user: {
+    created_at: string;
+    email: string;
+    id: number;
+    password_digest: string;
+    updated_at: string;
+  };
+}
+interface RegistrationProps {
+  handleSuccessfulAuth: (data: NewUserObject) => void;
+}
+
+const Registration = ({ handleSuccessfulAuth }: RegistrationProps) => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [passwordConfirmation, setPasswordConfirmation] = React.useState("");
@@ -26,7 +40,11 @@ const Registration = () => {
           { withCredentials: true }
         )
         .then((response) => {
-          console.log("registration res: ", response);
+          if (response.data.status === "created") {
+            handleSuccessfulAuth(response.data);
+          } else {
+            setRegistrationErrors("Error creating account");
+          }
         })
         .catch((error) => console.log("registration error", error));
     }
