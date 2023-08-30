@@ -6,7 +6,7 @@ import { SessionProps } from "../App";
 import { User } from "../App";
 
 export interface NewAuthObject {
-  status?: "created";
+  status?: string;
   user: User;
 }
 interface HomeProps extends SessionProps {
