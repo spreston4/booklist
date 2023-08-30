@@ -52,6 +52,11 @@ function App() {
     setLoggedInStatus("LOGGED_IN");
   };
 
+  const handleLogout = () => {
+    setCurrentUser(nullUser);
+    setLoggedInStatus("NOT_LOGGED_IN")
+  };
+
   React.useEffect(checkLoginStatus, []);
 
   return (
@@ -65,6 +70,7 @@ function App() {
                 loggedInStatus={loggedInStatus}
                 currentUser={currentUser}
                 handleLogin={handleLogin}
+                handleLogout={handleLogout}
               />
             }
           />
