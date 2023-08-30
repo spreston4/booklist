@@ -1,5 +1,6 @@
 import * as React from "react";
 import axios from "axios";
+import Button from "../ui/atoms/Button";
 import { NewAuthObject } from "../Home";
 
 interface RegistrationProps {
@@ -71,7 +72,7 @@ const Login = ({ handleSuccessfulAuth }: RegistrationProps) => {
           required
         />
 
-        <button type="submit">Login</button>
+        <Button type="submit" variant="fill" scheme="alternate">Login</Button>
       </form>
     </div>
   );
