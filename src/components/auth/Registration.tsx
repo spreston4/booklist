@@ -1,18 +1,9 @@
 import * as React from "react";
 import axios from "axios";
+import { NewAuthObject } from "../Home";
 
-export interface NewUserObject {
-  status?: "created";
-  user: {
-    created_at: string;
-    email: string;
-    id: number;
-    password_digest: string;
-    updated_at: string;
-  };
-}
 interface RegistrationProps {
-  handleSuccessfulAuth: (data: NewUserObject) => void;
+  handleSuccessfulAuth: (data: NewAuthObject) => void;
 }
 
 const Registration = ({ handleSuccessfulAuth }: RegistrationProps) => {
