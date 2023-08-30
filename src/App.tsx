@@ -1,6 +1,7 @@
 import * as React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
+import NavBar from "./components/NavBar";
 import Home from "./components/Home";
 import Dashboard from "./components/Dashboard";
 import { NewAuthObject } from "./components/Home";
@@ -61,6 +62,7 @@ function App() {
 
   return (
     <div>
+        <NavBar />
       <BrowserRouter>
         <Routes>
           <Route
