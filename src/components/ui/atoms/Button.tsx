@@ -23,7 +23,7 @@ const Button = ({
     primary: {
       fill: "bg-button-active text-type-white hover:bg-button-hover",
       outline:
-        "bg-transparent border-2 border-button-active text-button-active hover:border-button-hover hover:text-button-hover",
+        "bg-bg-primary border-2 border-button-active text-button-active hover:border-button-hover hover:text-button-hover",
       plain: "bg-transparent text-button-active hover:text-button-hover",
     },
     alternate: {
@@ -43,7 +43,7 @@ const Button = ({
 
   return (
     <button
-      className={`text-xs font-medium font-roboto uppercase rounded-sm ${padding[size]} ${classes[scheme][variant]} ${className}`}
+      className={`transition-all duration-300 text-xs font-medium font-roboto uppercase rounded-sm ${padding[size]} ${classes[scheme][variant]} ${className}`}
       onClick={onClick}
       type={type}
     >

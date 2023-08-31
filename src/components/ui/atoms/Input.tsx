@@ -41,7 +41,7 @@ const Input = ({
         value={value}
         onChange={onChange}
         required={required}
-        className={`font-roboto text-sm appearance-none bg-transparent p-2 w-full rounded-sm border-2 focus:outline-none ${classes[scheme]} ${className}`}
+        className={`transition-all duration-300 font-roboto text-sm appearance-none bg-transparent p-2 w-full rounded-sm border-2 focus:outline-none ${classes[scheme]} ${className}`}
       />
     </div>
   );

@@ -100,7 +100,7 @@ const Registration = ({ handleSuccessfulAuth }: RegistrationProps) => {
             onChange={handleChange}
             required
           />
-          <Button variant="fill" type="submit" scheme="alternate">
+          <Button variant="fill" type="submit">
             Register
           </Button>
         </div>

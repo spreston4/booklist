@@ -15,7 +15,7 @@ const Link = ({ children, className, href, scheme = "primary" }: LinkProps) => {
   return (
     <a
       href={href}
-      className={`text-xs font-medium font-roboto ${classes[scheme]} ${className}`}
+      className={`transition-all duration-300 text-xs font-medium font-roboto ${classes[scheme]} ${className}`}
     >
       {children}
     </a>

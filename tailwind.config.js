@@ -27,6 +27,20 @@ module.exports = {
         roboto: ["Roboto", "sans-serif"],
         montserrat: ["Montserrat", "sans-serif"],
       },
+      animation: {
+        fadeOut: "fadeOut 200ms ease-in-out",
+        fadeIn: "fadeIn 300ms ease-in-out",
+      },
+      keyframes: {
+        fadeOut: {
+          "100%": { opacity: "100%" },
+          "0%": { opaticy: "0%" },
+        },
+        fadeIn: {
+          "0%": { opacity: "0%" },
+          "100%": { opacity: "100%" },
+        },
+      },
     },
   },
   plugins: [],

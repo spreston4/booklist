@@ -23,6 +23,8 @@ const Home = ({
   handleLogout,
 }: HomeProps) => {
   const navigate = useNavigate();
+  const [displayRegister, setDisplayRegister] = React.useState(false);
+  const [displayLogin, setDisplayLogin] = React.useState(false);
 
   const handleSuccessfulAuth = (data: NewAuthObject) => {
     handleLogin(data);
@@ -38,7 +40,20 @@ const Home = ({
       .catch((error) => console.log("logout error: ", error));
   };
 
+  const handleToggleRegister = () => {
+    displayLogin && setDisplayLogin(false);
+    setDisplayRegister(!displayRegister);
+  };
+
+  const handleToggleLogin = () => {
+    displayRegister && setDisplayRegister(false);
+    setDisplayLogin(!displayLogin);
+  };
+
   const loggedIn = loggedInStatus === "LOGGED_IN";
+
+  const fade = (val: boolean) => (val ? "animate-fadeIn" : "animate-fadeOut");
+
   return (
     <div>
       <h1>Home</h1>
@@ -46,12 +61,30 @@ const Home = ({
       <h2>Email: {currentUser?.email}</h2>
       <h2>ID: {currentUser?.id}</h2>
       {loggedIn && (
-        <Button onClick={() => handleLogoutRequest()}>Logout</Button>
+        <div className="flex justify-center items-center">
+          <Button onClick={() => handleLogoutRequest()}>Logout</Button>
+        </div>
       )}
       {!loggedIn && (
         <div>
-          <Registration handleSuccessfulAuth={handleSuccessfulAuth} />
-          <Login handleSuccessfulAuth={handleSuccessfulAuth} />
+          <div className="mx-auto flex gap-4 justify-center items-center">
+            <Button variant="outline" onClick={handleToggleLogin}>
+              Login
+            </Button>
+            <Button variant="outline" onClick={handleToggleRegister}>
+              Register
+            </Button>
+          </div>
+          {displayLogin && (
+            <div className={`${fade(displayLogin)}`}>
+              <Login handleSuccessfulAuth={handleSuccessfulAuth} />
+            </div>
+          )}
+          {displayRegister && (
+            <div className={`${fade(displayRegister)}`}>
+              <Registration handleSuccessfulAuth={handleSuccessfulAuth} />
+            </div>
+          )}
         </div>
       )}
     </div>
