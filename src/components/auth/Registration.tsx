@@ -1,6 +1,7 @@
 import * as React from "react";
 import axios from "axios";
 import Button from "../ui/atoms/Button";
+import Input from "../ui/atoms/Input";
 import { NewAuthObject } from "../Home";
 
 interface RegistrationProps {
@@ -63,10 +64,16 @@ const Registration = ({ handleSuccessfulAuth }: RegistrationProps) => {
   };
 
   return (
-    <div>
-      <h1>Resistration</h1>
-      <form onSubmit={handleSubmit}>
-        <input
+    <div className="w-2/3 mx-auto">
+      <h2 className="font-montserrat text-type-dark text-xl font-medium py-4">
+        Sign Up!
+      </h2>
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col justify-between gap-4 w-full items-end"
+      >
+        <Input
+          label="Email"
           type="email"
           name="email"
           placeholder="Email"
@@ -74,25 +81,29 @@ const Registration = ({ handleSuccessfulAuth }: RegistrationProps) => {
           onChange={handleChange}
           required
         />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={password}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="password"
-          name="password_confirmation"
-          placeholder="Password Confirmation"
-          value={passwordConfirmation}
-          onChange={handleChange}
-          required
-        />
-        <Button variant="outline" type="submit" scheme="alternate">
-          Register
-        </Button>
+        <div className="flex flex-col gap-4 justify-start items-start w-full sm:flex-row sm:justify-between sm:items-end">
+          <Input
+            label="Password"
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={password}
+            onChange={handleChange}
+            required
+          />
+          <Input
+            label="Confirmation"
+            type="password"
+            name="password_confirmation"
+            placeholder="Password Confirmation"
+            value={passwordConfirmation}
+            onChange={handleChange}
+            required
+          />
+          <Button variant="fill" type="submit" scheme="alternate">
+            Register
+          </Button>
+        </div>
       </form>
     </div>
   );

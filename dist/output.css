@@ -584,20 +584,58 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .flex {
   display: flex;
+}
+
+.w-2\/3 {
+  width: 66.666667%;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.appearance-none {
+  -webkit-appearance: none;
+          appearance: none;
 }
 
 .flex-row {
   flex-direction: row;
 }
 
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
 .flex-nowrap {
   flex-wrap: nowrap;
 }
 
+.items-start {
+  align-items: flex-start;
+}
+
+.items-end {
+  align-items: flex-end;
+}
+
 .items-center {
   align-items: center;
+}
+
+.justify-start {
+  justify-content: flex-start;
 }
 
 .justify-end {
@@ -608,9 +646,17 @@ video {
   justify-content: space-between;
 }
 
+.gap-4 {
+  gap: 1rem;
+}
+
 .gap-x-2 {
   -webkit-column-gap: 0.5rem;
           column-gap: 0.5rem;
+}
+
+.gap-y-4 {
+  row-gap: 1rem;
 }
 
 .rounded-sm {
@@ -621,14 +667,19 @@ video {
   border-width: 2px;
 }
 
+.border-button-active {
+  --tw-border-opacity: 1;
+  border-color: rgb(54 197 186 / var(--tw-border-opacity));
+}
+
 .border-type-dark {
   --tw-border-opacity: 1;
   border-color: rgb(4 55 62 / var(--tw-border-opacity));
 }
 
-.border-button-active {
-  --tw-border-opacity: 1;
-  border-color: rgb(54 197 186 / var(--tw-border-opacity));
+.bg-bg-light {
+  --tw-bg-opacity: 1;
+  background-color: rgb(213 238 237 / var(--tw-bg-opacity));
 }
 
 .bg-button-active {
@@ -641,28 +692,18 @@ video {
   background-color: rgb(4 55 62 / var(--tw-bg-opacity));
 }
 
-.bg-bg-light {
-  --tw-bg-opacity: 1;
-  background-color: rgb(213 238 237 / var(--tw-bg-opacity));
-}
-
-.p-4 {
-  padding: 1rem;
-}
-
-.px-8 {
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-
-.py-3 {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
+.p-2 {
+  padding: 0.5rem;
 }
 
 .px-3 {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
+}
+
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .px-9 {
@@ -673,6 +714,11 @@ video {
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
+}
+
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .py-4 {
@@ -688,9 +734,14 @@ video {
   font-family: Roboto, sans-serif;
 }
 
-.text-xs {
-  font-size: 0.75rem;
-  line-height: 1rem;
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
 .text-xl {
@@ -698,13 +749,9 @@ video {
   line-height: 1.75rem;
 }
 
-.text-3xl {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
-}
-
-.font-bold {
-  font-weight: 700;
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
 }
 
 .font-medium {
@@ -715,6 +762,11 @@ video {
   text-transform: uppercase;
 }
 
+.text-button-active {
+  --tw-text-opacity: 1;
+  color: rgb(54 197 186 / var(--tw-text-opacity));
+}
+
 .text-type-dark {
   --tw-text-opacity: 1;
   color: rgb(4 55 62 / var(--tw-text-opacity));
@@ -723,11 +775,6 @@ video {
 .text-type-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.text-button-active {
-  --tw-text-opacity: 1;
-  color: rgb(54 197 186 / var(--tw-text-opacity));
 }
 
 .outline {
@@ -744,14 +791,14 @@ video {
   border-color: rgb(134 220 214 / var(--tw-border-opacity));
 }
 
-.hover\:bg-button-hover:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(134 220 214 / var(--tw-bg-opacity));
-}
-
 .hover\:bg-button-alt:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(111 140 140 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-button-hover:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(134 220 214 / var(--tw-bg-opacity));
 }
 
 .hover\:text-button-alt:hover {
@@ -762,4 +809,33 @@ video {
 .hover\:text-button-hover:hover {
   --tw-text-opacity: 1;
   color: rgb(134 220 214 / var(--tw-text-opacity));
+}
+
+.focus\:border-button-alt:focus {
+  --tw-border-opacity: 1;
+  border-color: rgb(111 140 140 / var(--tw-border-opacity));
+}
+
+.focus\:border-button-hover:focus {
+  --tw-border-opacity: 1;
+  border-color: rgb(134 220 214 / var(--tw-border-opacity));
+}
+
+.focus\:outline-none:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+@media (min-width: 640px) {
+  .sm\:flex-row {
+    flex-direction: row;
+  }
+
+  .sm\:items-end {
+    align-items: flex-end;
+  }
+
+  .sm\:justify-between {
+    justify-content: space-between;
+  }
 }

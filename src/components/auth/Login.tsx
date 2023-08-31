@@ -1,6 +1,7 @@
 import * as React from "react";
 import axios from "axios";
 import Button from "../ui/atoms/Button";
+import Input from "../ui/atoms/Input";
 import { NewAuthObject } from "../Home";
 
 interface RegistrationProps {
@@ -52,27 +53,37 @@ const Login = ({ handleSuccessfulAuth }: RegistrationProps) => {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <input
+    <div className="w-2/3 mx-auto">
+      <h2 className="font-montserrat text-type-dark text-xl font-medium py-4">
+        Sign In!
+      </h2>
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-wrap justify-between gap-y-4 gap-x-2 items-end"
+      >
+        <Input
           type="email"
           name="email"
           placeholder="Email"
           value={email}
           onChange={handleChange}
           required
+          label="Email"
         />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={password}
-          onChange={handleChange}
-          required
-        />
-
-        <Button type="submit" variant="fill" scheme="alternate">Login</Button>
+        <div className="flex flex-col gap-4 justify-start items-start w-full sm:flex-row sm:justify-between sm:items-end">
+          <Input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={password}
+            onChange={handleChange}
+            required
+            label="Password"
+          />
+          <Button type="submit" variant="fill">
+            Login
+          </Button>
+        </div>
       </form>
     </div>
   );
