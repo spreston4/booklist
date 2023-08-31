@@ -55,14 +55,19 @@ function App() {
 
   const handleLogout = () => {
     setCurrentUser(nullUser);
-    setLoggedInStatus("NOT_LOGGED_IN")
+    setLoggedInStatus("NOT_LOGGED_IN");
   };
 
   React.useEffect(checkLoginStatus, []);
 
   return (
     <div>
-        <NavBar />
+      <NavBar
+        loggedInStatus={loggedInStatus}
+        currentUser={currentUser}
+        handleLogin={handleLogin}
+        handleLogout={handleLogout}
+      />
       <BrowserRouter>
         <Routes>
           <Route

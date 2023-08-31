@@ -2,6 +2,7 @@ import * as React from "react";
 import { useNavigate } from "react-router-dom";
 import Registration from "./auth/Registration";
 import Login from "./auth/Login";
+import Button from "./ui/atoms/Button";
 import { SessionProps } from "../App";
 import { User } from "../App";
 import axios from "axios";
@@ -36,15 +37,23 @@ const Home = ({
       })
       .catch((error) => console.log("logout error: ", error));
   };
+
+  const loggedIn = loggedInStatus === "LOGGED_IN";
   return (
     <div>
       <h1>Home</h1>
       <h1>Status: {loggedInStatus}</h1>
       <h2>Email: {currentUser?.email}</h2>
       <h2>ID: {currentUser?.id}</h2>
-      <button onClick={() => handleLogoutRequest()}>Logout</button>
-      <Registration handleSuccessfulAuth={handleSuccessfulAuth} />
-      <Login handleSuccessfulAuth={handleSuccessfulAuth} />
+      {loggedIn && (
+        <Button onClick={() => handleLogoutRequest()}>Logout</Button>
+      )}
+      {!loggedIn && (
+        <div>
+          <Registration handleSuccessfulAuth={handleSuccessfulAuth} />
+          <Login handleSuccessfulAuth={handleSuccessfulAuth} />
+        </div>
+      )}
     </div>
   );
 };
