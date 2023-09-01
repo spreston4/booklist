@@ -17,7 +17,6 @@ const Registration = ({ handleSuccessfulAuth }: RegistrationProps) => {
   const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (password !== passwordConfirmation) {
-      console.log("password error");
       setRegistrationErrors("Passwords must match!");
     } else {
       axios
@@ -36,10 +35,12 @@ const Registration = ({ handleSuccessfulAuth }: RegistrationProps) => {
           if (response.data.status === "created") {
             handleSuccessfulAuth(response.data);
           } else {
-            setRegistrationErrors("Error creating account");
+            setRegistrationErrors(response.data.message);
           }
         })
-        .catch((error) => console.log("registration error", error));
+        .catch((error) => {
+          setRegistrationErrors("Error creating account");
+        });
     }
   };
 
@@ -105,6 +106,13 @@ const Registration = ({ handleSuccessfulAuth }: RegistrationProps) => {
           </Button>
         </div>
       </form>
+      {registrationErrors && (
+        <div className="py-4">
+          <p className="text-util-error font-roboto text-xs font-semibold">
+            {registrationErrors}
+          </p>
+        </div>
+      )}
     </div>
   );
 };
