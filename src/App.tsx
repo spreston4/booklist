@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import NavBar from "./components/NavBar";
 import Home from "./components/Home";
+import Books from "./components/Books";
 import Dashboard from "./components/Dashboard";
 import { NewAuthObject } from "./components/Home";
 
@@ -78,6 +79,15 @@ function App() {
                 currentUser={currentUser}
                 handleLogin={handleLogin}
                 handleLogout={handleLogout}
+              />
+            }
+          />
+          <Route
+            path="/books"
+            element={
+              <Books
+                loggedInStatus={loggedInStatus}
+                currentUser={currentUser}
               />
             }
           />

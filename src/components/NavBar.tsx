@@ -31,6 +31,7 @@ const NavBar = ({
       <h1 className="text-3xl font-montserrat text-type-dark">BookList</h1>
       <div className="flex flex-row flex-nowrap justify-end items-center gap-x-2">
         <Link scheme="alternate" href="/" className="uppercase">Home</Link>
+        <Link scheme="alternate" href="/books" className="uppercase">Books</Link>
         <Link scheme="alternate" href="/dashboard" className="uppercase">Dashboard</Link>
         {loggedIn && (
           <Button scheme="alternate" size="none" variant="plain" onClick={handleLogoutRequest}>
