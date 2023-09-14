@@ -1,4 +1,5 @@
 import * as React from "react";
+import Wishlist from "./Wishlist";
 import { SessionProps } from "../App";
 
 interface DashboardProps extends SessionProps {}
@@ -11,6 +12,9 @@ const Dashboard = ({ loggedInStatus, currentUser }: DashboardProps) => {
       <h1>Status: {loggedInStatus}</h1>
       <h2>Email: {currentUser?.email}</h2>
       <h2>ID: {currentUser?.id}</h2>
+      <div>
+        <Wishlist loggedInStatus={loggedInStatus} currentUser={currentUser} />
+      </div>
     </div>
   );
 };

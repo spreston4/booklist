@@ -601,6 +601,14 @@ video {
   width: 100%;
 }
 
+.w-4\/5 {
+  width: 80%;
+}
+
+.w-1\/2 {
+  width: 50%;
+}
+
 @-webkit-keyframes fadeIn {
   0% {
     opacity: 0%;
