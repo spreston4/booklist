@@ -19,6 +19,7 @@ module.exports = {
       type: {
         white: "#ffffff",
         light: "#9ed0d6",
+        grey: "#bbbbbb",
         dark: "#04373e",
       },
       util: {

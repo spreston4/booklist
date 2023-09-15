@@ -1,5 +1,6 @@
 import * as React from "react";
 import axios from "axios";
+import BookCard from "./ui/organisms/BookCard";
 import { SessionProps } from "../App";
 import { BookObject } from "./Books";
 
@@ -7,6 +8,7 @@ interface WishlistProps extends SessionProps {}
 
 const Wishlist = ({ loggedInStatus, currentUser }: WishlistProps) => {
   const [books, setBooks] = React.useState<BookObject[] | null>([]);
+  const [forceUpdate, setForceUpdate] = React.useState(false);
 
   const fetchWishlist = (id: number | null) => {
     axios
@@ -19,20 +21,28 @@ const Wishlist = ({ loggedInStatus, currentUser }: WishlistProps) => {
       .catch((error) => console.log("Wishlist fetch error: ", error));
   };
 
+  const handleForceUpdate = () => {
+    setForceUpdate(!forceUpdate);
+  };
+
   React.useEffect(() => {
     if (currentUser?.id) {
       fetchWishlist(currentUser.id);
     }
-  }, [currentUser.id]);
+  }, [currentUser?.id, forceUpdate]);
 
   return (
-    <div>
+    <div className="w-2/3 mx-auto">
       Wishlist
-      <div>
+      <div className="flex flex-col gap-4">
         {books?.map((book) => (
-          <p key={`${book.title}-${book.id}`} className="font-roboto">
-            {book.title}
-          </p>
+          <BookCard
+            book={book}
+            currentUser={currentUser}
+            removable={true}
+            handleForceUpdate={handleForceUpdate}
+            key={`${book.title}-${book.id}`}
+          />
         ))}
       </div>
     </div>

@@ -1,5 +1,6 @@
 import * as React from "react";
 import axios from "axios";
+import BookCard from "./ui/organisms/BookCard";
 import { SessionProps } from "../App";
 
 interface BooksProps extends SessionProps {}
@@ -30,9 +31,9 @@ const Books = ({ loggedInStatus, currentUser }: BooksProps) => {
       <h2 className="font-montserrat text-type-dark text-xl font-medium py-4">
         Books
       </h2>
-      <div>
+      <div className="flex flex-col gap-4">
         {books?.map((book) => (
-          <p key={`${book.title}-${book.id}`} className="font-roboto">{book.title}</p>
+          <BookCard book={book} addable={true} currentUser={currentUser} key={`${book.title}-${book.id}`} />
         ))}
       </div>
     </div>

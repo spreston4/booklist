@@ -9,15 +9,15 @@ import { NewAuthObject } from "./components/Home";
 
 export type LoggedInStatus = "LOGGED_IN" | "NOT_LOGGED_IN";
 export interface User {
-  created_at: string | null;
-  email: string | null;
-  id: number | null;
-  password_digest: string | null;
-  updated_at: string | null;
+  created_at: string;
+  email: string;
+  id: number;
+  password_digest: string;
+  updated_at: string;
 }
 export interface SessionProps {
   loggedInStatus: LoggedInStatus;
-  currentUser: User;
+  currentUser: User | null;
 }
 
 const nullUser = {
@@ -32,7 +32,7 @@ function App() {
   const [loggedInStatus, setLoggedInStatus] =
     React.useState<LoggedInStatus>("NOT_LOGGED_IN");
 
-  const [currentUser, setCurrentUser] = React.useState<User>(nullUser);
+  const [currentUser, setCurrentUser] = React.useState<User | null>(null);
 
   const checkLoginStatus = () => {
     axios
@@ -43,7 +43,7 @@ function App() {
           setCurrentUser(response.data.user);
         } else if (!response.data.logged_in && loggedInStatus === "LOGGED_IN") {
           setLoggedInStatus("NOT_LOGGED_IN");
-          setCurrentUser(nullUser);
+          setCurrentUser(null);
         }
       })
       .catch((error) => console.log("login error: ", error));
@@ -55,7 +55,7 @@ function App() {
   };
 
   const handleLogout = () => {
-    setCurrentUser(nullUser);
+    setCurrentUser(null);
     setLoggedInStatus("NOT_LOGGED_IN");
   };
 
