@@ -1,23 +1,24 @@
 import * as React from "react";
 import axios from "axios";
 import Button from "../atoms/Button";
+import Container from "../atoms/Container";
 import { BookObject } from "../../Books";
 import { User } from "../../../App";
 
 interface BookCardProps {
-  addable?: boolean;
+  addable?: "wishlist" | "readlist" | "both";
   book: BookObject;
   currentUser?: User | null;
   handleForceUpdate?: () => void;
-  removable?: boolean;
+  removable?: "wishlist" | "readlist" | "both";
 }
 
 const BookCard = ({
-  addable = false,
+  addable,
   book,
   currentUser,
   handleForceUpdate,
-  removable = false,
+  removable,
 }: BookCardProps) => {
   const handleAddWishlist = () => {
     axios
@@ -41,32 +42,40 @@ const BookCard = ({
         }
       )
       .then((response) => {
-        handleForceUpdate?.()
+        handleForceUpdate?.();
       })
       .catch((error) => console.log("Wishlist add error: ", error));
   };
 
   return (
-    <div className="bg-bg-primary p-2 rounded-sm">
+    <Container>
       <h3 className="font-montserrat text-type-dark text-lg font-medium">
         {book.title}
       </h3>
       <p className="font-roboto text-md text-type-grey">{book.author}</p>
-
-      {addable && (
-        <div className="flex justify-start items-center gap-2">
-          <Button onClick={handleAddWishlist}>+ Wishlist</Button>
-          <Button>+ Readlist</Button>
-        </div>
-      )}
-
-      {removable && (
-        <div className="flex justify-start items-center gap-2">
-          <Button onClick={handleRemoveWishlist}>- Wishlist</Button>
-          <Button>- Readlist</Button>
-        </div>
-      )}
-    </div>
+      <div className="flex justify-start items-center gap-2">
+        {removable && (
+          <div className="flex justify-start items-center gap-2">
+            {(removable === "wishlist" || removable === "both") && (
+              <Button onClick={handleRemoveWishlist}>- Wishlist</Button>
+            )}
+            {(removable === "readlist" || removable === "both") && (
+              <Button>- Readlist</Button>
+            )}
+          </div>
+        )}
+        {addable && (
+          <div className="flex justify-start items-center gap-2">
+            {(addable === "wishlist" || addable === "both") && (
+              <Button onClick={handleAddWishlist}>+ Wishlist</Button>
+            )}
+            {(addable === "readlist" || addable === "both") && (
+              <Button>+ Readlist</Button>
+            )}
+          </div>
+        )}
+      </div>
+    </Container>
   );
 };
 

@@ -1,6 +1,7 @@
 import * as React from "react";
 import axios from "axios";
 import BookCard from "./ui/organisms/BookCard";
+import Container from "./ui/atoms/Container";
 import { SessionProps } from "../App";
 import { BookObject } from "./Books";
 
@@ -37,9 +38,10 @@ const Wishlist = ({ loggedInStatus, currentUser }: WishlistProps) => {
       <div className="flex flex-col gap-4">
         {books?.map((book) => (
           <BookCard
+            addable="readlist"
             book={book}
             currentUser={currentUser}
-            removable={true}
+            removable={"wishlist"}
             handleForceUpdate={handleForceUpdate}
             key={`${book.title}-${book.id}`}
           />
