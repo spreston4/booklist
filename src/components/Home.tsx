@@ -3,18 +3,8 @@ import { useNavigate } from "react-router-dom";
 import Registration from "./auth/Registration";
 import Login from "./auth/Login";
 import Button from "./ui/atoms/Button";
-import { SessionProps } from "../App";
-import { User } from "../App";
 import axios from "axios";
-
-export interface NewAuthObject {
-  status?: string;
-  user: User;
-}
-interface HomeProps extends SessionProps {
-  handleLogin: (data: NewAuthObject) => void;
-  handleLogout: () => void;
-}
+import { HomeProps, NewAuthObject } from "../types";
 
 const Home = ({
   loggedInStatus,

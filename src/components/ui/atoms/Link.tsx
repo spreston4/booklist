@@ -1,11 +1,5 @@
 import * as React from "react";
-
-interface LinkProps {
-  children: any;
-  className?: string;
-  href: string;
-  scheme?: "primary" | "alternate";
-}
+import { LinkProps } from "../../../types";
 
 const Link = ({ children, className, href, scheme = "primary" }: LinkProps) => {
   const classes = {

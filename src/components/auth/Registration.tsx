@@ -2,11 +2,7 @@ import * as React from "react";
 import axios from "axios";
 import Button from "../ui/atoms/Button";
 import Input from "../ui/atoms/Input";
-import { NewAuthObject } from "../Home";
-
-interface RegistrationProps {
-  handleSuccessfulAuth: (data: NewAuthObject) => void;
-}
+import { RegistrationProps } from "../../types";
 
 const Registration = ({ handleSuccessfulAuth }: RegistrationProps) => {
   const [email, setEmail] = React.useState("");

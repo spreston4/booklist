@@ -1,18 +1,7 @@
 import * as React from "react";
 import axios from "axios";
 import BookCard from "./ui/organisms/BookCard";
-import { SessionProps } from "../App";
-
-interface BooksProps extends SessionProps {}
-
-export interface BookObject {
-  author: string;
-  created_at: string;
-  description?: string;
-  id: number;
-  title: string;
-  updated_at: string;
-}
+import { BooksProps, BookObject } from "../types";
 
 const Books = ({ loggedInStatus, currentUser }: BooksProps) => {
   const [books, setBooks] = React.useState<BookObject[] | null>([]);
@@ -33,7 +22,13 @@ const Books = ({ loggedInStatus, currentUser }: BooksProps) => {
       </h2>
       <div className="flex flex-col gap-4">
         {books?.map((book) => (
-          <BookCard book={book} addable={"both"} currentUser={currentUser} loggedInStatus={loggedInStatus} key={`${book.title}-${book.id}`} />
+          <BookCard
+            book={book}
+            addable={"both"}
+            currentUser={currentUser}
+            loggedInStatus={loggedInStatus}
+            key={`${book.title}-${book.id}`}
+          />
         ))}
       </div>
     </div>

@@ -1,14 +1,5 @@
 import * as React from "react";
-
-interface ButtonProps {
-  children: any;
-  className?: string;
-  onClick?: () => void;
-  scheme?: "primary" | "alternate";
-  size?: "none" | "sm" | "md" | "lg";
-  type?: "button" | "reset" | "submit" | undefined;
-  variant?: "fill" | "outline" | "plain";
-}
+import { ButtonProps } from "../../../types";
 
 const Button = ({
   children,

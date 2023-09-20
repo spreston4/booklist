@@ -1,8 +1,6 @@
 import * as React from "react";
 import Wishlist from "./Wishlist";
-import { SessionProps } from "../App";
-
-interface DashboardProps extends SessionProps {}
+import { DashboardProps } from "../types";
 
 const Dashboard = ({ loggedInStatus, currentUser }: DashboardProps) => {
   const loggedIn = loggedInStatus === "LOGGED_IN";

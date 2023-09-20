@@ -2,16 +2,7 @@ import * as React from "react";
 import axios from "axios";
 import Button from "../atoms/Button";
 import Container from "../atoms/Container";
-import { BookObject } from "../../Books";
-import { User } from "../../../App";
-import { SessionProps } from "../../../App";
-
-interface BookCardProps extends SessionProps {
-  addable?: "wishlist" | "readlist" | "both";
-  book: BookObject;
-  handleForceUpdate?: () => void;
-  removable?: "wishlist" | "readlist" | "both";
-}
+import { BookCardProps } from "../../../types";
 
 const BookCard = ({
   addable,
