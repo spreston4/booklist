@@ -33,7 +33,7 @@ const Books = ({ loggedInStatus, currentUser }: BooksProps) => {
       </h2>
       <div className="flex flex-col gap-4">
         {books?.map((book) => (
-          <BookCard book={book} addable={"both"} currentUser={currentUser} key={`${book.title}-${book.id}`} />
+          <BookCard book={book} addable={"both"} currentUser={currentUser} loggedInStatus={loggedInStatus} key={`${book.title}-${book.id}`} />
         ))}
       </div>
     </div>

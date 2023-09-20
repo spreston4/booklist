@@ -41,6 +41,7 @@ const Wishlist = ({ loggedInStatus, currentUser }: WishlistProps) => {
             addable="readlist"
             book={book}
             currentUser={currentUser}
+            loggedInStatus={loggedInStatus}
             removable={"wishlist"}
             handleForceUpdate={handleForceUpdate}
             key={`${book.title}-${book.id}`}

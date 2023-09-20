@@ -4,11 +4,11 @@ import Button from "../atoms/Button";
 import Container from "../atoms/Container";
 import { BookObject } from "../../Books";
 import { User } from "../../../App";
+import { SessionProps } from "../../../App";
 
-interface BookCardProps {
+interface BookCardProps extends SessionProps {
   addable?: "wishlist" | "readlist" | "both";
   book: BookObject;
-  currentUser?: User | null;
   handleForceUpdate?: () => void;
   removable?: "wishlist" | "readlist" | "both";
 }
@@ -18,8 +18,11 @@ const BookCard = ({
   book,
   currentUser,
   handleForceUpdate,
+  loggedInStatus,
   removable,
 }: BookCardProps) => {
+  const loggedIn = loggedInStatus === "LOGGED_IN";
+
   const handleAddWishlist = () => {
     axios
       .post(`http://localhost:3000/users/${currentUser?.id}/add_to_wishlist`, {
@@ -48,29 +51,25 @@ const BookCard = ({
   };
 
   return (
-    <Container>
+    <Container className="min-w-[175px]">
       <h3 className="font-montserrat text-type-dark text-lg font-medium">
         {book.title}
       </h3>
       <p className="font-roboto text-md text-type-grey">{book.author}</p>
       <div className="flex justify-start items-center gap-2">
-        {removable && (
-          <div className="flex justify-start items-center gap-2">
-            {(removable === "wishlist" || removable === "both") && (
-              <Button onClick={handleRemoveWishlist}>- Wishlist</Button>
-            )}
-            {(removable === "readlist" || removable === "both") && (
-              <Button>- Readlist</Button>
-            )}
-          </div>
-        )}
-        {addable && (
+        {loggedIn && (
           <div className="flex justify-start items-center gap-2">
             {(addable === "wishlist" || addable === "both") && (
               <Button onClick={handleAddWishlist}>+ Wishlist</Button>
             )}
             {(addable === "readlist" || addable === "both") && (
               <Button>+ Readlist</Button>
+            )}
+            {(removable === "wishlist" || removable === "both") && (
+              <Button onClick={handleRemoveWishlist}>- Wishlist</Button>
+            )}
+            {(removable === "readlist" || removable === "both") && (
+              <Button>- Readlist</Button>
             )}
           </div>
         )}
