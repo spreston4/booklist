@@ -15,7 +15,10 @@ function App() {
 
   const checkLoginStatus = () => {
     axios
-      .get("http://localhost:3000/logged_in", { withCredentials: true })
+      .get("http://localhost:3000/logged_in", {
+        headers: { Accept: "application/json" },
+        withCredentials: true,
+      })
       .then((response) => {
         if (response.data.logged_in && loggedInStatus === "NOT_LOGGED_IN") {
           setLoggedInStatus("LOGGED_IN");

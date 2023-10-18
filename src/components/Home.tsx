@@ -23,7 +23,7 @@ const Home = ({
 
   const handleLogoutRequest = () => {
     axios
-      .delete("http://localhost:3000/logout", { withCredentials: true })
+      .delete("http://localhost:3000/logout", {})
       .then((response) => {
         handleLogout();
       })
@@ -51,13 +51,13 @@ const Home = ({
       <h2>Email: {currentUser?.email}</h2>
       <h2>ID: {currentUser?.id}</h2>
       {loggedIn && (
-        <div className="flex justify-center items-center">
+        <div className="flex items-center justify-center">
           <Button onClick={() => handleLogoutRequest()}>Logout</Button>
         </div>
       )}
       {!loggedIn && (
         <div>
-          <div className="mx-auto flex gap-4 justify-center items-center">
+          <div className="flex items-center justify-center gap-4 mx-auto">
             <Button variant="outline" onClick={handleToggleLogin}>
               Login
             </Button>
