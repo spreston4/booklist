@@ -7,6 +7,8 @@ export interface UserObject {
   id: number;
   password_digest: string;
   updated_at: string;
+  wishlist?: BookObject[];
+  readlist?: BookObject[];
 }
 
 export interface BookObject {
