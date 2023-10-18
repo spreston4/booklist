@@ -1,16 +1,5 @@
 import * as React from "react";
-
-interface InputProps {
-  type?: string;
-  name: string;
-  className?: string;
-  placeholder?: string;
-  value?: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  required?: boolean;
-  scheme?: "primary" | "alternate";
-  label?: string;
-}
+import { InputProps } from "../../../types";
 
 const Input = ({
   type,

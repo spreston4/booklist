@@ -2,10 +2,7 @@ import * as React from "react";
 import axios from "axios";
 import BookCard from "./ui/organisms/BookCard";
 import Container from "./ui/atoms/Container";
-import { SessionProps } from "../App";
-import { BookObject } from "./Books";
-
-interface WishlistProps extends SessionProps {}
+import { BookObject, WishlistProps } from "../types";
 
 const Wishlist = ({ loggedInStatus, currentUser }: WishlistProps) => {
   const [books, setBooks] = React.useState<BookObject[] | null>([]);
@@ -13,8 +10,9 @@ const Wishlist = ({ loggedInStatus, currentUser }: WishlistProps) => {
 
   const fetchWishlist = (id: number | null) => {
     axios
-      .get(`http://localhost:3000/users/${id}/get_wishlist`, {
+      .get(`http://localhost:3000/user/${id}/get_wishlist`, {
         headers: { Accept: "application/json" },
+        withCredentials: true,
       })
       .then((response) => {
         setBooks(response.data.books);

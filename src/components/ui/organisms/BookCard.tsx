@@ -2,16 +2,7 @@ import * as React from "react";
 import axios from "axios";
 import Button from "../atoms/Button";
 import Container from "../atoms/Container";
-import { BookObject } from "../../Books";
-import { User } from "../../../App";
-import { SessionProps } from "../../../App";
-
-interface BookCardProps extends SessionProps {
-  addable?: "wishlist" | "readlist" | "both";
-  book: BookObject;
-  handleForceUpdate?: () => void;
-  removable?: "wishlist" | "readlist" | "both";
-}
+import { BookCardProps } from "../../../types";
 
 const BookCard = ({
   addable,
@@ -25,7 +16,7 @@ const BookCard = ({
 
   const handleAddWishlist = () => {
     axios
-      .post(`http://localhost:3000/users/${currentUser?.id}/add_to_wishlist`, {
+      .post(`http://localhost:3000/user/${currentUser?.id}/add_to_wishlist`, {
         headers: { Accept: "application/json" },
         book: book,
       })
@@ -36,7 +27,7 @@ const BookCard = ({
   const handleRemoveWishlist = () => {
     axios
       .delete(
-        `http://localhost:3000/users/${currentUser?.id}/remove_from_wishlist`,
+        `http://localhost:3000/user/${currentUser?.id}/remove_from_wishlist`,
         {
           data: {
             headers: { Accept: "application/json" },
@@ -52,13 +43,13 @@ const BookCard = ({
 
   return (
     <Container className="min-w-[175px]">
-      <h3 className="font-montserrat text-type-dark text-lg font-medium">
+      <h3 className="text-lg font-medium font-montserrat text-type-dark">
         {book.title}
       </h3>
       <p className="font-roboto text-md text-type-grey">{book.author}</p>
-      <div className="flex justify-start items-center gap-2">
+      <div className="flex items-center justify-start gap-2">
         {loggedIn && (
-          <div className="flex justify-start items-center gap-2">
+          <div className="flex items-center justify-start gap-2">
             {(addable === "wishlist" || addable === "both") && (
               <Button onClick={handleAddWishlist}>+ Wishlist</Button>
             )}

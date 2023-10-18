@@ -5,38 +5,20 @@ import NavBar from "./components/NavBar";
 import Home from "./components/Home";
 import Books from "./components/Books";
 import Dashboard from "./components/Dashboard";
-import { NewAuthObject } from "./components/Home";
-
-export type LoggedInStatus = "LOGGED_IN" | "NOT_LOGGED_IN";
-export interface User {
-  created_at: string;
-  email: string;
-  id: number;
-  password_digest: string;
-  updated_at: string;
-}
-export interface SessionProps {
-  loggedInStatus: LoggedInStatus;
-  currentUser: User | null;
-}
-
-const nullUser = {
-  created_at: null,
-  email: null,
-  id: null,
-  password_digest: null,
-  updated_at: null,
-};
+import { LoggedInStatus, NewAuthObject, UserObject } from "./types";
 
 function App() {
   const [loggedInStatus, setLoggedInStatus] =
     React.useState<LoggedInStatus>("NOT_LOGGED_IN");
 
-  const [currentUser, setCurrentUser] = React.useState<User | null>(null);
+  const [currentUser, setCurrentUser] = React.useState<UserObject | null>(null);
 
   const checkLoginStatus = () => {
     axios
-      .get("http://localhost:3000/logged_in", { withCredentials: true })
+      .get("http://localhost:3000/logged_in", {
+        headers: { Accept: "application/json" },
+        withCredentials: true,
+      })
       .then((response) => {
         if (response.data.logged_in && loggedInStatus === "NOT_LOGGED_IN") {
           setLoggedInStatus("LOGGED_IN");

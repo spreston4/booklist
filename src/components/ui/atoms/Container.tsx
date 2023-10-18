@@ -1,9 +1,5 @@
 import * as React from "react";
-
-interface ContanerProps {
-  children: any;
-  className?: string;
-}
+import { ContanerProps } from "../../../types";
 
 const Container = ({ children, className }: ContanerProps) => {
   return (

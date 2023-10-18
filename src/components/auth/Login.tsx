@@ -2,11 +2,7 @@ import * as React from "react";
 import axios from "axios";
 import Button from "../ui/atoms/Button";
 import Input from "../ui/atoms/Input";
-import { NewAuthObject } from "../Home";
-
-interface RegistrationProps {
-  handleSuccessfulAuth: (data: NewAuthObject) => void;
-}
+import { RegistrationProps } from "../../types";
 
 const Login = ({ handleSuccessfulAuth }: RegistrationProps) => {
   const [email, setEmail] = React.useState("");
@@ -24,7 +20,7 @@ const Login = ({ handleSuccessfulAuth }: RegistrationProps) => {
             password: password,
           },
         },
-        { withCredentials: true }
+        { headers: { Accept: "application/json" }, withCredentials: true }
       )
       .then((response) => {
         if (response.data.logged_in) {
@@ -54,12 +50,12 @@ const Login = ({ handleSuccessfulAuth }: RegistrationProps) => {
 
   return (
     <div className="w-2/3 mx-auto">
-      <h2 className="font-montserrat text-type-dark text-xl font-medium py-4">
+      <h2 className="py-4 text-xl font-medium font-montserrat text-type-dark">
         Sign In!
       </h2>
       <form
         onSubmit={handleSubmit}
-        className="flex flex-wrap justify-between gap-y-4 gap-x-2 items-end"
+        className="flex flex-wrap items-end justify-between gap-y-4 gap-x-2"
       >
         <Input
           type="email"
@@ -70,7 +66,7 @@ const Login = ({ handleSuccessfulAuth }: RegistrationProps) => {
           required
           label="Email"
         />
-        <div className="flex flex-col gap-4 justify-start items-start w-full sm:flex-row sm:justify-between sm:items-end">
+        <div className="flex flex-col items-start justify-start w-full gap-4 sm:flex-row sm:justify-between sm:items-end">
           <Input
             type="password"
             name="password"
