@@ -2,9 +2,9 @@ import * as React from "react";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import NavBar from "./components/NavBar";
-import Home from "./components/Home";
-import Books from "./components/Books";
-import Dashboard from "./components/Dashboard";
+import Home from "./pages/Home";
+import Books from "./pages/Books";
+import Dashboard from "./pages/Dashboard";
 import { LoggedInStatus, NewAuthObject, UserObject } from "./types";
 
 axios.defaults.baseURL = process.env.REACT_APP_BE_URL;

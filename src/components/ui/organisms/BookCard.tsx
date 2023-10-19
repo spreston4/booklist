@@ -24,6 +24,16 @@ const BookCard = ({
       .catch((error) => console.log("Wishlist add error: ", error));
   };
 
+  const handleAddReadlist = () => {
+    axios
+      .post(`/user/${currentUser?.id}/add_to_readlist`, {
+        headers: { Accept: "application/json" },
+        book: book,
+      })
+      .then((response) => {})
+      .catch((error) => console.log("Readlist add error: ", error));
+  };
+
   const handleRemoveWishlist = () => {
     axios
       .delete(
@@ -41,6 +51,23 @@ const BookCard = ({
       .catch((error) => console.log("Wishlist add error: ", error));
   };
 
+  const handleRemoveReadlist = () => {
+    axios
+      .delete(
+        `/user/${currentUser?.id}/remove_from_readlist`,
+        {
+          data: {
+            headers: { Accept: "application/json" },
+            book: book,
+          },
+        }
+      )
+      .then((response) => {
+        handleForceUpdate?.();
+      })
+      .catch((error) => console.log("Readlist add error: ", error));
+  };
+
   return (
     <Container className="min-w-[175px]">
       <h3 className="text-lg font-medium font-montserrat text-type-dark">
@@ -54,13 +81,13 @@ const BookCard = ({
               <Button onClick={handleAddWishlist}>+ Wishlist</Button>
             )}
             {(addable === "readlist" || addable === "both") && (
-              <Button>+ Readlist</Button>
+              <Button onClick={handleAddReadlist}>+ Readlist</Button>
             )}
             {(removable === "wishlist" || removable === "both") && (
               <Button onClick={handleRemoveWishlist}>- Wishlist</Button>
             )}
             {(removable === "readlist" || removable === "both") && (
-              <Button>- Readlist</Button>
+              <Button onClick={handleRemoveReadlist}>- Readlist</Button>
             )}
           </div>
         )}

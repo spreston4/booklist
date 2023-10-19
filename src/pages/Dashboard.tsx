@@ -1,5 +1,6 @@
 import * as React from "react";
-import Wishlist from "./Wishlist";
+import Wishlist from "../components/Wishlist";
+import Readlist from "../components/Readlist";
 import { DashboardProps } from "../types";
 
 const Dashboard = ({ loggedInStatus, currentUser }: DashboardProps) => {
@@ -11,11 +12,11 @@ const Dashboard = ({ loggedInStatus, currentUser }: DashboardProps) => {
       <h1>Status: {loggedInStatus}</h1>
       <h2>Email: {currentUser?.email}</h2>
       <h2>ID: {currentUser?.id}</h2>
-      {loggedIn && (
-        <div>
-          <Wishlist loggedInStatus={loggedInStatus} currentUser={currentUser} />
-        </div>
-      )}
+
+      <div className="flex flex-row items-center justify-center">
+        <Wishlist loggedInStatus={loggedInStatus} currentUser={currentUser} />
+        <Readlist loggedInStatus={loggedInStatus} currentUser={currentUser} />
+      </div>
     </div>
   );
 };

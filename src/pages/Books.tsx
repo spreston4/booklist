@@ -1,6 +1,6 @@
 import * as React from "react";
 import axios from "axios";
-import BookCard from "./ui/organisms/BookCard";
+import BookCard from "../components/ui/organisms/BookCard";
 import { BooksProps, BookObject } from "../types";
 
 const Books = ({ loggedInStatus, currentUser }: BooksProps) => {

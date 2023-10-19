@@ -1,8 +1,8 @@
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
-import Registration from "./auth/Registration";
-import Login from "./auth/Login";
-import Button from "./ui/atoms/Button";
+import Registration from "../components/auth/Registration";
+import Login from "../components/auth/Login";
+import Button from "../components/ui/atoms/Button";
 import axios from "axios";
 import { HomeProps, NewAuthObject } from "../types";
 
