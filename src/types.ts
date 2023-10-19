@@ -95,4 +95,5 @@ export interface LinkProps {
   className?: string;
   href: string;
   scheme?: SchemeCategories;
+  internal?: boolean;
 }

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import NavBar from "./components/NavBar";
 import Home from "./components/Home";
@@ -52,7 +52,7 @@ function App() {
         handleLogin={handleLogin}
         handleLogout={handleLogout}
       />
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route
             path="/"
@@ -84,7 +84,7 @@ function App() {
             }
           />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }

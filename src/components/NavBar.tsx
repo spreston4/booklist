@@ -24,14 +24,14 @@ const NavBar = ({
     <div className="flex flex-row items-center justify-between px-8 py-4 flex-nowrap bg-bg-light">
       <h1 className="text-3xl font-montserrat text-type-dark">BookList</h1>
       <div className="flex flex-row items-center justify-end flex-nowrap gap-x-2">
-        <Link scheme="alternate" href="/" className="uppercase">
+        <Link scheme="alternate" href="/" className="uppercase" internal>
           Home
         </Link>
-        <Link scheme="alternate" href="/books" className="uppercase">
+        <Link scheme="alternate" href="/books" className="uppercase" internal>
           Books
         </Link>
         {loggedIn && (
-          <Link scheme="alternate" href="/dashboard" className="uppercase">
+          <Link scheme="alternate" href="/dashboard" className="uppercase" internal>
             Dashboard
           </Link>
         )}
