@@ -47,7 +47,10 @@ export interface HomeProps extends SessionProps {
 
 export interface DashboardProps extends SessionProps {}
 
-export interface WishlistProps extends SessionProps {}
+export interface WishlistProps extends SessionProps {
+    list: BookObject[] | null;
+    handleForceUpdate?: () => void;
+}
 
 export interface BooksProps extends SessionProps {}
 

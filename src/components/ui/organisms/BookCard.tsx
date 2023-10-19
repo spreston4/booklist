@@ -20,7 +20,9 @@ const BookCard = ({
         headers: { Accept: "application/json" },
         book: book,
       })
-      .then((response) => {})
+      .then((response) => {
+        handleForceUpdate?.();
+      })
       .catch((error) => console.log("Wishlist add error: ", error));
   };
 
@@ -30,7 +32,9 @@ const BookCard = ({
         headers: { Accept: "application/json" },
         book: book,
       })
-      .then((response) => {})
+      .then((response) => {
+        handleForceUpdate?.();
+      })
       .catch((error) => console.log("Readlist add error: ", error));
   };
 
