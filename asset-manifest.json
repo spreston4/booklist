@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/booklist/static/css/main.0e7c7887.css",
-    "main.js": "/booklist/static/js/main.b2fbced4.js",
+    "main.js": "/booklist/static/js/main.9aa5bf39.js",
     "index.html": "/booklist/index.html",
     "main.0e7c7887.css.map": "/booklist/static/css/main.0e7c7887.css.map",
-    "main.b2fbced4.js.map": "/booklist/static/js/main.b2fbced4.js.map"
+    "main.9aa5bf39.js.map": "/booklist/static/js/main.9aa5bf39.js.map"
   },
   "entrypoints": [
     "static/css/main.0e7c7887.css",
-    "static/js/main.b2fbced4.js"
+    "static/js/main.9aa5bf39.js"
   ]
 }
