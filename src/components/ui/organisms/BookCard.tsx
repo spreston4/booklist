@@ -16,7 +16,7 @@ const BookCard = ({
 
   const handleAddWishlist = () => {
     axios
-      .post(`http://localhost:3000/user/${currentUser?.id}/add_to_wishlist`, {
+      .post(`/user/${currentUser?.id}/add_to_wishlist`, {
         headers: { Accept: "application/json" },
         book: book,
       })
@@ -27,7 +27,7 @@ const BookCard = ({
   const handleRemoveWishlist = () => {
     axios
       .delete(
-        `http://localhost:3000/user/${currentUser?.id}/remove_from_wishlist`,
+        `/user/${currentUser?.id}/remove_from_wishlist`,
         {
           data: {
             headers: { Accept: "application/json" },

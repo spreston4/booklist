@@ -7,7 +7,7 @@ const Books = ({ loggedInStatus, currentUser }: BooksProps) => {
   const [books, setBooks] = React.useState<BookObject[] | null>([]);
   const fetchBooks = () => {
     axios
-      .get("http://localhost:3000/api/v1/books")
+      .get("/api/v1/books")
       .then((response) => {
         setBooks(response.data.books);
       })
@@ -17,7 +17,7 @@ const Books = ({ loggedInStatus, currentUser }: BooksProps) => {
   React.useEffect(fetchBooks, []);
   return (
     <div className="w-2/3 mx-auto">
-      <h2 className="font-montserrat text-type-dark text-xl font-medium py-4">
+      <h2 className="py-4 text-xl font-medium font-montserrat text-type-dark">
         Books
       </h2>
       <div className="flex flex-col gap-4">

@@ -23,7 +23,7 @@ const Home = ({
 
   const handleLogoutRequest = () => {
     axios
-      .delete("http://localhost:3000/logout", {})
+      .delete("/logout", {})
       .then((response) => {
         handleLogout();
       })

@@ -10,7 +10,7 @@ const Wishlist = ({ loggedInStatus, currentUser }: WishlistProps) => {
 
   const fetchWishlist = (id: number | null) => {
     axios
-      .get(`http://localhost:3000/user/${id}/get_wishlist`, {
+      .get(`/user/${id}/get_wishlist`, {
         headers: { Accept: "application/json" },
         withCredentials: true,
       })

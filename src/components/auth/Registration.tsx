@@ -17,7 +17,7 @@ const Registration = ({ handleSuccessfulAuth }: RegistrationProps) => {
     } else {
       axios
         .post(
-          "http://localhost:3000/user",
+          "/user",
           {
             user: {
               email: email,

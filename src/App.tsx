@@ -7,15 +7,16 @@ import Books from "./components/Books";
 import Dashboard from "./components/Dashboard";
 import { LoggedInStatus, NewAuthObject, UserObject } from "./types";
 
+axios.defaults.baseURL = process.env.REACT_APP_BE_URL;
+
 function App() {
   const [loggedInStatus, setLoggedInStatus] =
     React.useState<LoggedInStatus>("NOT_LOGGED_IN");
-
   const [currentUser, setCurrentUser] = React.useState<UserObject | null>(null);
 
   const checkLoginStatus = () => {
     axios
-      .get("http://localhost:3000/logged_in", {
+      .get("/logged_in", {
         headers: { Accept: "application/json" },
         withCredentials: true,
       })
