@@ -1,3 +1,4 @@
+
 export type LoggedInStatus = "LOGGED_IN" | "NOT_LOGGED_IN";
 
 // Object Interfaces
@@ -47,9 +48,12 @@ export interface HomeProps extends SessionProps {
 
 export interface DashboardProps extends SessionProps {}
 
-export interface WishlistProps extends SessionProps {
+export interface BooklistProps extends SessionProps {
     list: BookObject[] | null;
     handleForceUpdate?: () => void;
+    name: string;
+    removable?: ListCategories;
+    addable?: ListCategories;
 }
 
 export interface BooksProps extends SessionProps {}

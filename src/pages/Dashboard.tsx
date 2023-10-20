@@ -1,11 +1,9 @@
 import * as React from "react";
 import axios from "axios";
-import Wishlist from "../components/Wishlist";
-import Readlist from "../components/Readlist";
+import BookList from "../components/ui/templates/BookList";
 import { DashboardProps, BookObject } from "../types";
 
 const Dashboard = ({ loggedInStatus, currentUser }: DashboardProps) => {
-  const loggedIn = loggedInStatus === "LOGGED_IN";
   const [wishlist, setWishlist] = React.useState<BookObject[] | null>([]);
   const [readlist, setReadlist] = React.useState<BookObject[] | null>([]);
   const [forceUpdate, setForceUpdate] = React.useState(false);
@@ -36,23 +34,24 @@ const Dashboard = ({ loggedInStatus, currentUser }: DashboardProps) => {
   return (
     <div>
       <h1>Dashboard</h1>
-      <h1>Home</h1>
-      <h1>Status: {loggedInStatus}</h1>
-      <h2>Email: {currentUser?.email}</h2>
-      <h2>ID: {currentUser?.id}</h2>
-
-      <div className="flex flex-row items-center justify-center">
-        <Wishlist
+      <div className="flex flex-row items-start justify-start">
+        <BookList
+          name="Wishlist"
           loggedInStatus={loggedInStatus}
           currentUser={currentUser}
           list={wishlist}
           handleForceUpdate={handleForceUpdate}
+          removable="wishlist"
+          addable="readlist"
         />
-        <Readlist
+        <BookList
+          name="Readlist"
           loggedInStatus={loggedInStatus}
           currentUser={currentUser}
           list={readlist}
           handleForceUpdate={handleForceUpdate}
+          removable="readlist"
+          addable="wishlist"
         />
       </div>
     </div>
