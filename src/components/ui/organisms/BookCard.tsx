@@ -14,62 +14,28 @@ const BookCard = ({
 }: BookCardProps) => {
   const loggedIn = loggedInStatus === "LOGGED_IN";
 
-  const handleAddWishlist = () => {
-    axios
-      .post(`/user/${currentUser?.id}/add_to_wishlist`, {
-        headers: { Accept: "application/json" },
+  const handleAction = (
+    list: "wishlist" | "readlist",
+    action: "post" | "delete"
+  ) => {
+    const isPost = action === "post";
+    const endpoint = {
+      wishlist: isPost ? "add_to_wishlist" : "remove_from_wishlist",
+      readlist: isPost ? "add_to_readlist" : "remove_from_readlist",
+    };
+
+    axios({
+      method: action,
+      url: `/user/${currentUser?.id}/${endpoint[list]}`,
+      headers: { Accept: "application/json" },
+      data: {
         book: book,
-      })
+      },
+    })
       .then((response) => {
         handleForceUpdate?.();
       })
-      .catch((error) => console.log("Wishlist add error: ", error));
-  };
-
-  const handleAddReadlist = () => {
-    axios
-      .post(`/user/${currentUser?.id}/add_to_readlist`, {
-        headers: { Accept: "application/json" },
-        book: book,
-      })
-      .then((response) => {
-        handleForceUpdate?.();
-      })
-      .catch((error) => console.log("Readlist add error: ", error));
-  };
-
-  const handleRemoveWishlist = () => {
-    axios
-      .delete(
-        `/user/${currentUser?.id}/remove_from_wishlist`,
-        {
-          data: {
-            headers: { Accept: "application/json" },
-            book: book,
-          },
-        }
-      )
-      .then((response) => {
-        handleForceUpdate?.();
-      })
-      .catch((error) => console.log("Wishlist add error: ", error));
-  };
-
-  const handleRemoveReadlist = () => {
-    axios
-      .delete(
-        `/user/${currentUser?.id}/remove_from_readlist`,
-        {
-          data: {
-            headers: { Accept: "application/json" },
-            book: book,
-          },
-        }
-      )
-      .then((response) => {
-        handleForceUpdate?.();
-      })
-      .catch((error) => console.log("Readlist add error: ", error));
+      .catch((error) => console.error(error));
   };
 
   return (
@@ -82,16 +48,24 @@ const BookCard = ({
         {loggedIn && (
           <div className="flex items-center justify-start gap-2">
             {(addable === "wishlist" || addable === "both") && (
-              <Button onClick={handleAddWishlist}>+ Wishlist</Button>
+              <Button onClick={() => handleAction("wishlist", "post")}>
+                + Wishlist
+              </Button>
             )}
             {(addable === "readlist" || addable === "both") && (
-              <Button onClick={handleAddReadlist}>+ Readlist</Button>
+              <Button onClick={() => handleAction("readlist", "post")}>
+                + Readlist
+              </Button>
             )}
             {(removable === "wishlist" || removable === "both") && (
-              <Button onClick={handleRemoveWishlist}>- Wishlist</Button>
+              <Button onClick={() => handleAction("wishlist", "delete")}>
+                - Wishlist
+              </Button>
             )}
             {(removable === "readlist" || removable === "both") && (
-              <Button onClick={handleRemoveReadlist}>- Readlist</Button>
+              <Button onClick={() => handleAction("readlist", "delete")}>
+                - Readlist
+              </Button>
             )}
           </div>
         )}

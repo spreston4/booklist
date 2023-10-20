@@ -59,8 +59,8 @@ export interface BooklistProps extends SessionProps {
 export interface BooksProps extends SessionProps {}
 
 // UI Types
-type ListCategories = "wishlist" | "readlist" | "both";
-type SchemeCategories = "primary" | "alternate";
+export type ListCategories = "wishlist" | "readlist" | "both";
+export type SchemeCategories = "primary" | "alternate";
 
 // UI Props Interfaces
 export interface BookCardProps extends SessionProps {
